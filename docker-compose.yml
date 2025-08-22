@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: factoring-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: factoring
+    ports:
+      - "5432:5432"
+    volumes:
+      - factoring_data:/var/lib/postgres/data
+
+volumes:
+  factoring_data:
