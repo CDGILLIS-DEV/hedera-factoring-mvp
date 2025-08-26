@@ -8,11 +8,12 @@ import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity
-@Table
-@Getter
-@Setter
+@Table(name = "invoices")
+//@Getter
+//@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Builder
 public class Invoice {
     @Id
@@ -26,16 +27,19 @@ public class Invoice {
     @Column(nullable = false, precision = 19, scale = 4)
     private BigDecimal amount;
 
-    @Column(nullable = false)
+//    @Builder.Default
+    @Column(length = 8,nullable = false)
     private String currency;
 
     @Column(name = "due_date")
     private LocalDate dueDate;
 
+    @Builder.Default
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private InvoiceStatus status = InvoiceStatus.PENDING;
 
+    @Builder.Default
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
 }

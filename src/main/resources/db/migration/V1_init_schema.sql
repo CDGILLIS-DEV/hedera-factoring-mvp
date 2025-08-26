@@ -4,7 +4,7 @@ CREATE TABLE customers (
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255),
   account_id VARCHAR(128),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+--  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
 -- Invoices
@@ -15,7 +15,7 @@ CREATE TABLE invoices (
   currency VARCHAR(8) NOT NULL DEFAULT 'USD',
   due_date DATE,
   status VARCHAR(32) NOT NULL DEFAULT 'PENDING',
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+--  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
 -- Deals
@@ -25,7 +25,7 @@ CREATE TABLE deals (
   purchaser_account_id VARCHAR(128) NOT NULL,
   purchase_price NUMERIC(19,4) NOT NULL,
   status VARCHAR(32) NOT NULL DEFAULT 'INITIATED',
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+--  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
 -- Useful indexes

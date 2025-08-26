@@ -7,9 +7,9 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "customers")
-@Getter
-@Setter
-//@Data                  // Lombok: getters, setters, toString, equals/hashCode
+//@Getter
+//@Setter
+@Data                  // Lombok: getters, setters, toString, equals/hashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -24,6 +24,7 @@ public class Customer {
     // Optional: Hedera account ID for the customer (string)
     private String accountId;
 
-    @Column(name = "created_at", nullable = false)
+    @Builder.Default
+    @Column(name = "created_at", updatable = false, insertable = false)
     private Instant createdAt = Instant.now();
 }

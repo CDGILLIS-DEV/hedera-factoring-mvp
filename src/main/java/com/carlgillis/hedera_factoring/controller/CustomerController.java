@@ -17,6 +17,14 @@ public class CustomerController {
         this.svc = svc;
     }
 
+//    @PostMapping("/debug")
+//    public ResponseEntity<String> debug(@RequestBody String raw) {
+//        return ResponseEntity.ok("Got: " + raw);
+//    }
+//    @PostMapping("/raw")
+//    public ResponseEntity<String> echo(@RequestBody String body) {
+//        return ResponseEntity.ok(body);
+//    }
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody CustomerDto dto) {
         Customer c = Customer.builder()

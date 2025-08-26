@@ -8,10 +8,11 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "deals")
-@Getter
-@Setter
+//@Getter
+//@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Builder
 public class Deal {
     @Id
@@ -33,6 +34,7 @@ public class Deal {
     @Column(nullable = false)
     private DealStatus status = DealStatus.INITIATED;
 
+    @Builder.Default
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
 }
