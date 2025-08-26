@@ -39,6 +39,9 @@ dependencies {
 	//gRPC-netty-shaded
 	implementation 'io.grpc:grpc-netty-shaded:1.64.0'
 
+	// Flyway for DB migrations
+	implementation 'org.flywaydb:flyway-core:9.21.1'
+
 	// Optional: for validation, tests, etc.
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
