@@ -18,18 +18,14 @@ public class InvoiceController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@Valid @RequestBody InvoiceDto dto) {
-        Invoice invoice = Invoice.builder()
-                .amount(dto.getAmount())
-                .currency(dto.getCurrency() == null ? "USD" : dto.getCurrency())
-                .dueDate(dto.getDueDate())
-                .build();
-        Invoice saved = svc.create(invoice, dto.getCustomerId());
-        return ResponseEntity.ok(saved);
+    public ResponseEntity<Invoice> create(@Valid @RequestBody InvoiceDto dto) {
+        return ResponseEntity.ok(svc.create(dto));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> get(@PathVariable Long id) {
-        return ResponseEntity.ok(svc.findById(id));
+    public ResponseEntity<Invoice> get(@PathVariable Long id) {
+        return svc.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }

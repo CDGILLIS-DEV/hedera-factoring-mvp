@@ -17,27 +17,15 @@ public class CustomerController {
         this.svc = svc;
     }
 
-//    @PostMapping("/debug")
-//    public ResponseEntity<String> debug(@RequestBody String raw) {
-//        return ResponseEntity.ok("Got: " + raw);
-//    }
-//    @PostMapping("/raw")
-//    public ResponseEntity<String> echo(@RequestBody String body) {
-//        return ResponseEntity.ok(body);
-//    }
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody CustomerDto dto) {
-        Customer c = Customer.builder()
-                .name(dto.getName())
-                .email(dto.getEmail())
-                .accountId(dto.getAccountId())
-                .build();
-        Customer saved = svc. create(c);
-        return ResponseEntity.ok(saved);
+        return ResponseEntity.ok(svc.create(dto));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> get(@PathVariable Long id) {
-        return ResponseEntity.ok(svc.findById(id));
+        return svc.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }

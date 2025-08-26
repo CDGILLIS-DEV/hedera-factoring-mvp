@@ -18,18 +18,14 @@ public class DealController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@Valid @RequestBody DealDto dto) {
-        Deal deal = Deal.builder()
-                .purchaserAccountId((dto.getPurchaserAccountId()))
-                .purchasePrice(dto.getPurchasePrice())
-                .build();
-
-        Deal saved = svc.initiateDeal(dto.getInvoiceId(), deal);
-        return ResponseEntity.ok(saved);
+    public ResponseEntity<Deal> create(@Valid @RequestBody DealDto dto) {
+        return ResponseEntity.ok(svc.create(dto));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> get(@PathVariable Long id) {
-        return ResponseEntity.ok(svc.findById(id));
+    public ResponseEntity<Deal> get(@PathVariable Long id) {
+        return svc.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
