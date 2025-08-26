@@ -3,9 +3,10 @@ package com.carlgillis.hedera_factoring.controller;
 import com.carlgillis.hedera_factoring.domain.Customer;
 import com.carlgillis.hedera_factoring.dto.CustomerDto;
 import com.carlgillis.hedera_factoring.service.CustomerService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/customers")
