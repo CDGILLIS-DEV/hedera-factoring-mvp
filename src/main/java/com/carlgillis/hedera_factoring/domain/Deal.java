@@ -1,5 +1,6 @@
 package com.carlgillis.hedera_factoring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,11 +9,12 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "deals")
-//@Getter
-//@Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@JsonIgnoreProperties
 @Builder
 public class Deal {
     @Id

@@ -1,24 +1,29 @@
 # spring.application.name=hedera-factoring-backend
+hedera:
+  network: testnet
+  operatorId: ${HEDERA_OPERATOR_ID}
+  operatorKey: ${HEDERA_OPERATOR_KEY}
+
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/factoring
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5432/factoringdb
+    username: factoring_user
+    password: factoring_pass
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update # auto create tables for dev, but not for prod
-    show-sql: true     # prints SQL in logs
+      ddl-auto: update      # ? keep yours here
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
-
-server:
-  port: 8080
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 
-hedera:
-  network: testnet
-  operatorId: 0.0.6351690
-  operatorKey: 302e020100300506032b65700422042009f561ab2830d9e644b1e011741bb327476c83ec23a1ba224344abaf3287523e
+
+
+
+
+
+

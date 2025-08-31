@@ -14,7 +14,7 @@ public class HederaClientConfig {
     public Client hederaClient(HederaProperties props) {
         String network = props.getNetwork() != null ? props.getNetwork() : "testnet";
 
-        Client client = Client.forName(network);
+        Client client = Client.forTestnet();
         client.setOperator(
                 AccountId.fromString(props.getOperatorId()),
                 PrivateKey.fromString(props.getOperatorKey())

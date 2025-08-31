@@ -1,5 +1,6 @@
 package com.carlgillis.hedera_factoring.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,11 +8,12 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "customers")
-//@Getter
-//@Setter
+@Getter
+@Setter
 @Data                  // Lombok: getters, setters, toString, equals/hashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties
 @Builder
 public class Customer {
     @Id

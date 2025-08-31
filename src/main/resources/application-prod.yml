@@ -1,0 +1,25 @@
+# spring.application.name=hedera-factoring-backend
+
+hedera:
+  network: mainnet
+  operatorId: ${HEDERA_OPERATOR_ID}
+  operatorKey: ${HEDERA_OPERATOR_KEY}
+
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/factoringdb
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate     # safer: ensure schema matches, don’t auto-mutate
+    show-sql: false          # disable noisy logs for prod
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080                 # can override if needed
