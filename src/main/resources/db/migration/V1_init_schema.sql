@@ -26,6 +26,7 @@ CREATE TABLE deals (
   purchase_price NUMERIC(19,4) NOT NULL,
   status VARCHAR(32) NOT NULL DEFAULT 'INITIATED',
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+  transaction_id BIGSERIAL NOT NULL
 );
 
 -- Useful indexes

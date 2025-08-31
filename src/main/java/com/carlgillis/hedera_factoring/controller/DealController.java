@@ -28,7 +28,7 @@ public class DealController {
     }
 
     @PostMapping
-    public ResponseEntity<DealResponseDto> create(@Valid @RequestBody DealDto dto) throws ReceiptStatusException, PrecheckStatusException, TimeoutException {
+    public ResponseEntity<DealResponseDto> create(@Valid @RequestBody DealDto dto) throws Exception {
         return ResponseEntity.ok(svc.create(dto));
     }
 

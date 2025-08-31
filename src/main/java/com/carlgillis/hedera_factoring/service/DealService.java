@@ -59,7 +59,7 @@ public class DealService {
      * For MVP, we do not perform on-chain settlement here; that will be added once contract/wallet flows exist.
      */
     @Transactional
-    public DealResponseDto create(DealDto dto) throws ReceiptStatusException, PrecheckStatusException, TimeoutException {
+    public DealResponseDto create(DealDto dto) throws Exception {
         // 1. Load invoice
         Invoice invoice = invoiceRepo.findById(dto.getInvoiceId())
                 .orElseThrow(() -> new RuntimeException("Invoice not found"));
@@ -71,6 +71,7 @@ public class DealService {
                 .purchasePrice(dto.getPurchasePrice())
                 .status(DealStatus.INITIATED)
                 .createdAt(Instant.now())
+                .transactionId(dto.getTransactionId())
                 .build();
 
         // 3. Execute Hedera transfer (tiny test transaction)

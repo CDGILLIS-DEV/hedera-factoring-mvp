@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 
 @Data
 @NoArgsConstructor
@@ -24,4 +25,13 @@ public class DealDto {
     @NotNull
     @DecimalMin("0.01")
     private BigDecimal purchasePrice;
+
+    @NotNull
+    private String status;
+
+
+    private Instant createdAt;
+
+
+    private String transactionId;
 }

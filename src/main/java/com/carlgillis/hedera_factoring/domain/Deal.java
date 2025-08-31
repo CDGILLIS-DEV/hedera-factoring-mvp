@@ -37,9 +37,9 @@ public class Deal {
     private DealStatus status = DealStatus.INITIATED;
 
     @Builder.Default
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private Instant createdAt = Instant.now();
 
-    @Column(name = "transaction_id", nullable = false)
+    @Column(name = "transaction_id")
     private String transactionId;
 }
