@@ -34,7 +34,7 @@ public class Invoice {
     private String currency;
 
     @Column(name = "due_date")
-    private LocalDate dueDate;
+    private Instant dueDate;
 
     @Builder.Default
     @Column(nullable = false)
