@@ -4,6 +4,7 @@ import com.carlgillis.hedera_factoring.domain.Customer;
 import com.carlgillis.hedera_factoring.domain.Invoice;
 import com.carlgillis.hedera_factoring.domain.InvoiceStatus;
 import com.carlgillis.hedera_factoring.dto.InvoiceDto;
+import com.carlgillis.hedera_factoring.dto.InvoiceResponseDto;
 import com.carlgillis.hedera_factoring.repository.CustomerRepository;
 import com.carlgillis.hedera_factoring.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,32 @@ public class InvoiceService {
         this.invoiceRepo = invoiceRepo;
         this.customerRepo = customerRepo;
     }
+
+    public List<InvoiceResponseDto> getAllInvoices() {
+        return invoiceRepo.findAll().stream()
+                .map(i -> InvoiceResponseDto.builder()
+                        .id(i.getId())
+                        .customerId(i.getCustomer().getId())
+                        .amount(i.getAmount())
+                        .currency(i.getCurrency())
+                        .dueDate(Instant.from(i.getDueDate()))
+                        .build())
+                .toList();
+
+
+    }
+
+    public InvoiceResponseDto getInvoiceById(Long id) {
+        var i = invoiceRepo.findById(id).orElseThrow();
+        return InvoiceResponseDto.builder()
+                .id(i.getId())
+                .customerId(i.getCustomer().getId())
+                .amount(i.getAmount())
+                .currency(i.getCurrency())
+                .dueDate(Instant.from(i.getDueDate()))
+                .build();
+    }
+
     @Transactional
     public Invoice create(InvoiceDto dto) {
         Customer customer = customerRepo.findById(dto.getCustomerId())

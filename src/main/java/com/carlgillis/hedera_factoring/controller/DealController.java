@@ -2,11 +2,13 @@ package com.carlgillis.hedera_factoring.controller;
 
 import com.carlgillis.hedera_factoring.domain.Deal;
 import com.carlgillis.hedera_factoring.dto.DealDto;
+import com.carlgillis.hedera_factoring.dto.DealResponseDto;
 import com.carlgillis.hedera_factoring.service.DealService;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/deals")
@@ -17,15 +19,19 @@ public class DealController {
         this.svc = svc;
     }
 
+
+    @GetMapping
+    public List<DealResponseDto> getAll() {
+        return  svc.getAllDeals();
+    }
+
     @PostMapping
     public ResponseEntity<Deal> create(@Valid @RequestBody DealDto dto) {
         return ResponseEntity.ok(svc.create(dto));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Deal> get(@PathVariable Long id) {
-        return svc.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<DealResponseDto> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(svc.getDealById(id));
     }
 }

@@ -2,11 +2,14 @@ package com.carlgillis.hedera_factoring.controller;
 
 import com.carlgillis.hedera_factoring.domain.Customer;
 import com.carlgillis.hedera_factoring.dto.CustomerDto;
+import com.carlgillis.hedera_factoring.dto.CustomerResponseDto;
 import com.carlgillis.hedera_factoring.service.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/customers")
@@ -22,10 +25,13 @@ public class CustomerController {
         return ResponseEntity.ok(svc.create(dto));
     }
 
+    @GetMapping
+    public List<CustomerResponseDto> getAll() {
+        return svc.getAllCustomers();
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<?> get(@PathVariable Long id) {
-        return svc.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<?> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(svc.getCustomerById(id));
     }
 }
