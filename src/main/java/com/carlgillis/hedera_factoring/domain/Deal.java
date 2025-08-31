@@ -22,10 +22,10 @@ public class Deal {
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "invoice_id")
+    @JoinColumn(name = "invoice_id", nullable = false)
     private Invoice invoice;
 
-    // For MVP we store purchaser's Hedera account / identifier
+    // For MVP, we store purchaser's Hedera account / identifier
     @Column(name = "purchaser_account_id", nullable = false)
     private String purchaserAccountId;
 
@@ -39,4 +39,7 @@ public class Deal {
     @Builder.Default
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
+
+    @Column(name = "transaction_id", nullable = false)
+    private String transactionId;
 }

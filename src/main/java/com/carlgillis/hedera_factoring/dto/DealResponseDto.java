@@ -17,4 +17,5 @@ public class DealResponseDto {
     private BigDecimal purchasePrice;
     private String status;
     private Instant createdAt;
+    private String transactionId;
 }

@@ -1,14 +1,16 @@
 package com.carlgillis.hedera_factoring.controller;
 
-import com.carlgillis.hedera_factoring.domain.Deal;
 import com.carlgillis.hedera_factoring.dto.DealDto;
 import com.carlgillis.hedera_factoring.dto.DealResponseDto;
 import com.carlgillis.hedera_factoring.service.DealService;
+import com.hedera.hashgraph.sdk.PrecheckStatusException;
+import com.hedera.hashgraph.sdk.ReceiptStatusException;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 @RestController
 @RequestMapping("/deals")
@@ -26,7 +28,7 @@ public class DealController {
     }
 
     @PostMapping
-    public ResponseEntity<Deal> create(@Valid @RequestBody DealDto dto) {
+    public ResponseEntity<DealResponseDto> create(@Valid @RequestBody DealDto dto) throws ReceiptStatusException, PrecheckStatusException, TimeoutException {
         return ResponseEntity.ok(svc.create(dto));
     }
 
