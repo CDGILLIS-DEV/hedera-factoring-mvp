@@ -17,8 +17,6 @@ public class HederaFactoringBackendApplication {
 	@Bean
 	CommandLineRunner demo(CustomerRepository repo) {
 		return  args -> {
-			// Save a record
-			repo.save(new Customer());
 
 			// Read all records
 			repo.findAll().forEach(System.out::println);
