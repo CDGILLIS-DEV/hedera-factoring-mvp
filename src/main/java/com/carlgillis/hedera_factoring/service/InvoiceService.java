@@ -14,6 +14,8 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.stream.Collectors.toList;
+
 @Service
 public class InvoiceService {
     private final InvoiceRepository invoiceRepo;
@@ -47,6 +49,19 @@ public class InvoiceService {
                 .currency(i.getCurrency())
                 .dueDate(Instant.from(i.getDueDate()))
                 .build();
+    }
+
+    public List<InvoiceResponseDto> getInvoicesByCustomer(Long customerId) {
+        return invoiceRepo.findByCustomerId(customerId).stream()
+                .map(inv -> InvoiceResponseDto.builder()
+                        .id(inv.getId())
+                        .customerId(inv.getCustomer().getId())
+                        .amount(inv.getAmount())
+                        .dueDate(inv.getDueDate())
+                        .status(String.valueOf(inv.getStatus()))
+                        .build()
+                ).toList();
+
     }
 
     @Transactional

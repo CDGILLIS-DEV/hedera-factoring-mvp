@@ -53,6 +53,22 @@ public class DealService {
                 .build();
     }
 
+    public List<DealResponseDto> getDealsByInvoice(Long invoiceId) {
+        return dealRepo.findByInvoiceId(invoiceId).stream()
+                .map(d -> DealResponseDto.builder()
+                        .id(d.getId())
+                        .invoiceId(d.getInvoice().getId())
+                        .purchaserAccountId(d.getPurchaserAccountId())
+                        .purchasePrice(d.getPurchasePrice())
+                        .status(String.valueOf(d.getStatus()))
+                        .createdAt(d.getCreatedAt())
+                        .transactionId(d.getTransactionId())
+                        .build()
+
+                ).toList();
+
+    }
+
 
     /**
      * Initiates a deal: validates invoice available, creates Deal, and marks invoice as factored.

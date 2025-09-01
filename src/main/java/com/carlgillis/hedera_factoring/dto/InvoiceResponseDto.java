@@ -1,7 +1,6 @@
 package com.carlgillis.hedera_factoring.dto;
 
 import lombok.*;
-import org.springframework.web.bind.annotation.BindParam;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -17,4 +16,5 @@ public class InvoiceResponseDto {
     private BigDecimal amount;
     private String currency;
     private Instant dueDate;
+    private String status;
 }
