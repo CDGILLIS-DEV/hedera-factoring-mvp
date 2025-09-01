@@ -34,12 +34,12 @@ public class Invoice {
     private String currency;
 
     @Column(name = "due_date")
-    private Instant dueDate;
+    private String dueDate;
 
-    @Builder.Default
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private InvoiceStatus status = InvoiceStatus.PENDING;
+    private InvoiceStatus status;
 
     @Builder.Default
     @Column(name = "created_at", nullable = false)

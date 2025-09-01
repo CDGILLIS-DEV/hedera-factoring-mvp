@@ -16,31 +16,37 @@ import java.util.List;
 @RestController
 @RequestMapping("/invoices")
 public class InvoiceController {
-    private final InvoiceService svc;
+    private final InvoiceService invoiceService;
     private final DealService dealService;
 
     public InvoiceController(InvoiceService svc, DealService dealService) {
-        this.svc = svc;
+        this.invoiceService = svc;
         this.dealService = dealService;
     }
 
     @GetMapping
     public List<InvoiceResponseDto> getAll() {
-        return svc.getAllInvoices();
+        return invoiceService.getAllInvoices();
     }
 
     @PostMapping
     public ResponseEntity<Invoice> create(@Valid @RequestBody InvoiceDto dto) {
-        return ResponseEntity.ok(svc.create(dto));
+        return ResponseEntity.ok(invoiceService.create(dto));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<InvoiceResponseDto> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(svc.getInvoiceById(id));
+        return ResponseEntity.ok(invoiceService.getInvoiceById(id));
     }
 
     @GetMapping("/{id}/deals")
     public List<DealResponseDto> getDealsForInvoice(@PathVariable Long id) {
         return dealService.getDealsByInvoice(id);
+    }
+
+    @PutMapping("/{id}/pay")
+    public ResponseEntity<InvoiceResponseDto> markAsPaid(@PathVariable Long id) {
+        InvoiceResponseDto updated = invoiceService.markAsPaid(id);
+        return  ResponseEntity.ok(updated);
     }
 }

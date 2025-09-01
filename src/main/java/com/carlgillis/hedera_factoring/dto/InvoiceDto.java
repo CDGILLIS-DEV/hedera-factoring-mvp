@@ -1,11 +1,13 @@
 package com.carlgillis.hedera_factoring.dto;
 
+import com.carlgillis.hedera_factoring.domain.InvoiceStatus;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.cglib.core.Local;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -24,5 +26,8 @@ public class InvoiceDto {
     private BigDecimal amount;
 
     private String currency = "USD";
-    private Instant dueDate;
+
+    private String dueDate;
+
+    private String status = String.valueOf(InvoiceStatus.PENDING);
 }

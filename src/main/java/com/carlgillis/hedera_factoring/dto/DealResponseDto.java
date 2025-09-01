@@ -1,5 +1,6 @@
 package com.carlgillis.hedera_factoring.dto;
 
+import com.carlgillis.hedera_factoring.domain.DealStatus;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -15,7 +16,7 @@ public class DealResponseDto {
     private Long invoiceId;
     private String purchaserAccountId;
     private BigDecimal purchasePrice;
-    private String status;
+    private DealStatus status;
     private Instant createdAt;
     private String transactionId;
 }

@@ -1,9 +1,11 @@
 package com.carlgillis.hedera_factoring.dto;
 
+import com.carlgillis.hedera_factoring.domain.InvoiceStatus;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -15,6 +17,6 @@ public class InvoiceResponseDto {
     private Long customerId;
     private BigDecimal amount;
     private String currency;
-    private Instant dueDate;
-    private String status;
+    private String dueDate;
+    private InvoiceStatus status;
 }

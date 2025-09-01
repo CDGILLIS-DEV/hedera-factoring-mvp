@@ -3,7 +3,6 @@ package com.carlgillis.hedera_factoring.service;
 import com.carlgillis.hedera_factoring.domain.Deal;
 import com.carlgillis.hedera_factoring.domain.DealStatus;
 import com.carlgillis.hedera_factoring.domain.Invoice;
-import com.carlgillis.hedera_factoring.domain.InvoiceStatus;
 import com.carlgillis.hedera_factoring.dto.DealDto;
 import com.carlgillis.hedera_factoring.dto.DealResponseDto;
 import com.carlgillis.hedera_factoring.repository.DealRepository;
@@ -15,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeoutException;
+
 
 @Service
 public class DealService {
@@ -37,7 +36,7 @@ public class DealService {
                         .invoiceId(d.getInvoice().getId())
                         .purchaserAccountId(d.getPurchaserAccountId())
                         .purchasePrice(d.getPurchasePrice())
-                        .status(String.valueOf(d.getStatus()))
+                        .status(d.getStatus())
                         .build())
                 .toList();
     }
@@ -49,7 +48,7 @@ public class DealService {
                 .invoiceId(d.getInvoice().getId())
                 .purchaserAccountId(d.getPurchaserAccountId())
                 .purchasePrice(d.getPurchasePrice())
-                .status(String.valueOf(d.getStatus()))
+                .status(d.getStatus())
                 .build();
     }
 
@@ -60,7 +59,7 @@ public class DealService {
                         .invoiceId(d.getInvoice().getId())
                         .purchaserAccountId(d.getPurchaserAccountId())
                         .purchasePrice(d.getPurchasePrice())
-                        .status(String.valueOf(d.getStatus()))
+                        .status(d.getStatus())
                         .createdAt(d.getCreatedAt())
                         .transactionId(d.getTransactionId())
                         .build()
@@ -115,7 +114,7 @@ public class DealService {
                 .id(saved.getId())
                 .invoiceId(saved.getInvoice().getId())
                 .purchaserAccountId(saved.getPurchaserAccountId())
-                .status(String.valueOf(saved.getStatus()))
+                .status(saved.getStatus())
                 .createdAt(saved.getCreatedAt())
                 .transactionId(saved.getTransactionId())
                 .build();
