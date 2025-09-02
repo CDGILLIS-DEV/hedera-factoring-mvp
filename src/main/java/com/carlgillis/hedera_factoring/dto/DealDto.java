@@ -16,22 +16,22 @@ import java.time.Instant;
 @AllArgsConstructor
 @Builder
 public class DealDto {
-    @NotNull
+    @NotNull(message = "Invoice ID is required")
     private Long invoiceId;
 
-    @NotBlank
+    @NotBlank(message = "Purchaser account ID is required")
     private String purchaserAccountId;
 
-    @NotNull
-    @DecimalMin("0.01")
+    @NotNull(message = "Purchase price is required")
+    @DecimalMin(value = "0.01", message = "Purchase price must be greater than zero")
     private BigDecimal purchasePrice;
 
-    @NotNull
+    @NotNull(message = "Status is required")
     private String status;
 
 
     private Instant createdAt;
 
-
+    @NotNull(message = "Transaction ID is required")
     private String transactionId;
 }
