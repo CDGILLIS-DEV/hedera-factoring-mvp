@@ -17,6 +17,6 @@ public class InvoiceResponseDto {
     private Long customerId;
     private BigDecimal amount;
     private String currency;
-    private String dueDate;
+    private LocalDate dueDate;
     private InvoiceStatus status;
 }

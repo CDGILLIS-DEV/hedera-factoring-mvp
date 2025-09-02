@@ -31,7 +31,7 @@ public class InvoiceDto {
 
     @NotNull(message = "Due date is required")
     @FutureOrPresent(message = "Due date must be today or in the future")
-    private String dueDate;
+    private LocalDate dueDate;
 
     @NotNull(message = "Status is required")
     private String status = String.valueOf(InvoiceStatus.PENDING);

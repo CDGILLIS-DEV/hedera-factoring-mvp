@@ -9,6 +9,7 @@ import com.carlgillis.hedera_factoring.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,7 @@ public class InvoiceService {
                         .customerId(i.getCustomer().getId())
                         .amount(i.getAmount())
                         .currency(i.getCurrency())
-                        .dueDate(i.getDueDate())
+                        .dueDate(LocalDate.parse(i.getDueDate()))
                         .build())
                 .toList();
 
@@ -45,7 +46,7 @@ public class InvoiceService {
                 .customerId(i.getCustomer().getId())
                 .amount(i.getAmount())
                 .currency(i.getCurrency())
-                .dueDate(i.getDueDate())
+                .dueDate(LocalDate.parse(i.getDueDate()))
                 .status(i.getStatus())
                 .build();
     }
@@ -56,7 +57,7 @@ public class InvoiceService {
                         .id(inv.getId())
                         .customerId(inv.getCustomer().getId())
                         .amount(inv.getAmount())
-                        .dueDate(inv.getDueDate())
+                        .dueDate(LocalDate.parse(inv.getDueDate()))
                         .status(inv.getStatus())
                         .build()
                 ).toList();
@@ -72,7 +73,7 @@ public class InvoiceService {
                 .customer(customer)
                 .amount(dto.getAmount())
                 .currency(dto.getCurrency())
-                .dueDate(dto.getDueDate())
+                .dueDate(String.valueOf(dto.getDueDate()))
                 .status(InvoiceStatus.PENDING)
                 .build();
 
@@ -114,7 +115,7 @@ public class InvoiceService {
                 .customerId(savedInvoice.getId())
                 .amount(savedInvoice.getAmount())
                 .currency(savedInvoice.getCurrency())
-                .dueDate(savedInvoice.getDueDate())
+                .dueDate(LocalDate.parse(savedInvoice.getDueDate()))
                 .status(savedInvoice.getStatus())
                 .build();
     }
