@@ -13,12 +13,12 @@ import java.time.Instant;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+//@Data
 @JsonIgnoreProperties
 @Builder
 public class Deal {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)

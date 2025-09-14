@@ -1,0 +1,9 @@
+CREATE TABLE deals (
+    id BIGSERIAL PRIMARY KEY,
+    invoice_id BIGINT NOT NULL REFERENCES invoices(id) ON DELETE CASCADE,
+    purchaser_account_id VARCHAR(100) NOT NULL,
+    purchase_price NUMERIC(19, 4) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT now(),
+    transaction_id VARCHAR(200)
+);
