@@ -14,7 +14,7 @@ CREATE TABLE invoices (
   amount NUMERIC(19,4) NOT NULL,
   currency VARCHAR(8) NOT NULL DEFAULT 'USD',
   due_date DATE,
-  status VARCHAR(32) NOT NULL DEFAULT 'PENDING',
+  status VARCHAR(32) NOT NULL DEFAULT 'OPEN',
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 ALTER TABLE invoices DROP CONSTRAINT invoices_status_check;
