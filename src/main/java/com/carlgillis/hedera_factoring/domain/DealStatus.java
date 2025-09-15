@@ -8,5 +8,6 @@ public enum DealStatus {
     CONFIRMED,
     COMPLETED,
     CANCELLED,
-    SETTLED
+    SETTLED,
+    OPEN
 }

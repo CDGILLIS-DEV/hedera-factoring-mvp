@@ -39,7 +39,7 @@ public class Invoice {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private InvoiceStatus status;
+    private InvoiceStatus status = InvoiceStatus.OPEN;
 
     @Builder.Default
     @Column(name = "created_at", nullable = false)
