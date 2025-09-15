@@ -34,5 +34,5 @@ public class InvoiceDto {
     private LocalDate dueDate;
 
     @NotNull(message = "Status is required")
-    private String status = String.valueOf(InvoiceStatus.PENDING);
+    private String status = String.valueOf(InvoiceStatus.OPEN);
 }

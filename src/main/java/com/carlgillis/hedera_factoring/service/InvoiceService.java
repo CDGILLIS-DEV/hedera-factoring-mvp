@@ -74,7 +74,7 @@ public class InvoiceService {
                 .amount(dto.getAmount())
                 .currency(dto.getCurrency())
                 .dueDate(String.valueOf(dto.getDueDate()))
-                .status(InvoiceStatus.PENDING)
+                .status(InvoiceStatus.OPEN)
                 .build();
 
         return invoiceRepo.save(invoice);
