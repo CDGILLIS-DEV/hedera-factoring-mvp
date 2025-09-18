@@ -32,6 +32,7 @@ public class Deal {
     @Column(name = "purchase_price", nullable = false, precision = 19, scale = 4)
     private BigDecimal purchasePrice;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private DealStatus status = DealStatus.INITIATED;

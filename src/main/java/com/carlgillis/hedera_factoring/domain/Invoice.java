@@ -36,7 +36,7 @@ public class Invoice {
     @Column(name = "due_date")
     private String dueDate;
 
-
+    @Builder.Default
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private InvoiceStatus status = InvoiceStatus.OPEN;

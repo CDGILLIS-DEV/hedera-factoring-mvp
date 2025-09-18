@@ -8,10 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.cglib.core.Local;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
 
 @Data
@@ -26,6 +24,7 @@ public class InvoiceDto {
     @DecimalMin(value = "0.01", message = "Amount must be greater than zero")
     private BigDecimal amount;
 
+    @Builder.Default
     @NotNull(message = "Currency is required")
     private String currency = "USD";
 
@@ -33,6 +32,7 @@ public class InvoiceDto {
     @FutureOrPresent(message = "Due date must be today or in the future")
     private LocalDate dueDate;
 
+    @Builder.Default
     @NotNull(message = "Status is required")
     private String status = String.valueOf(InvoiceStatus.OPEN);
 }
