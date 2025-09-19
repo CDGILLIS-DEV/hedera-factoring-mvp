@@ -13,7 +13,7 @@ import java.time.Instant;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@Data
+@Data
 @JsonIgnoreProperties
 @Builder
 public class Deal {
