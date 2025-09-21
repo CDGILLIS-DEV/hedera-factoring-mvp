@@ -37,6 +37,8 @@ public class DealService {
                         .purchaserAccountId(d.getPurchaserAccountId())
                         .purchasePrice(d.getPurchasePrice())
                         .status(d.getStatus())
+                        .createdAt(d.getCreatedAt())
+                        .transactionId(d.getTransactionId())
                         .build())
                 .toList();
     }
